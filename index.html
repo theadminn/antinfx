@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NET.fx Aufklärung</title>
+    <style>
+        /* Allgemeine Seiteneinstellungen */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Header-Bereich mit Support-Option oben rechts */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .support-btn {
+            background: none;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .support-btn:hover {
+            background-color: #ffffff;
+            color: #121212;
+        }
+
+        /* Hauptinhalt und Buttons */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .menu-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #222222;
+            border: 1px solid #333333;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            text-align: center;
+        }
+
+        .menu-btn:hover {
+            background-color: #2a2a2a;
+            transform: translateY(-2px);
+        }
+
+        /* Gefärbter Button für die NFX-Ausschalten Option */
+        .menu-btn.highlight {
+            background-color: #d32f2f;
+            border: none;
+        }
+
+        .menu-btn.highlight:hover {
+            background-color: #b71c1c;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0 10px 0;
+            font-size: 0.9rem;
+            color: #888888;
+            letter-spacing: 0.5px;
+        }
+
+        /* Fenster / Modals (Popups) */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            border: 1px solid #333333;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            line-height: 1.6;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaaaaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #ffffff;
+        }
+
+        /* Anpassungen für Mobilgeräte */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+
+            .support-btn {
+                align-self: flex-end;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .menu-btn {
+                padding: 16px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NET.fx Aufklärung</h1>
+        <button class="support-btn" onclick="openModal('modal-support')">Fragen und Support</button>
+    </header>
+
+    <main>
+        <button class="menu-btn" onclick="openModal('modal-wer-sind-wir')">Wer sind wir?</button>
+        <button class="menu-btn highlight" onclick="openModal('modal-nfx-ausschalten')">Wie NFX ausschalten?</button>
+        <button class="menu-btn" onclick="openModal('modal-aufpassen')">Aufpassen</button>
+    </main>
+
+    <footer>
+        <p>Anonymität ist ein Menschenrecht</p>
+    </footer>
+
+    <!-- Fenster: Wer sind wir? -->
+    <div id="modal-wer-sind-wir" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-wer-sind-wir')">&times;</span>
+            <p>Eventuell fragt ihr euch, wer wir sind und warum wir das eigentlich machen? Es ist ein Aufstand gegen die Autorität, die uns nicht mehr reden lässt. Wir sind nur eine Idee, eine Bewegung.</p>
+        </div>
+    </div>
+
+    <!-- Fenster: Wie NFX ausschalten? -->
+    <div id="modal-nfx-ausschalten" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-nfx-ausschalten')">&times;</span>
+            <p>Es gibt mehrere Wege, NET.fx oder NFX auszuschalten. Ein simpler Weg ist, ein Programm namens System Informer herunterzuladen und den NFX.fx Client und NFX Tray zu terminieren, oder wenn man sich auskennt, kann man (wie wir) ein Script schreiben. Um es wieder anzuschalten, gehen Sie auf NET.fx (wahrscheinlich auf dem Desktop) und gehen Sie auf Dienst neu starten.</p>
+        </div>
+    </div>
+
+    <!-- Fenster: Aufpassen -->
+    <div id="modal-aufpassen" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-aufpassen')">&times;</span>
+            <p>Wenn Sie zu oft nicht online sind im NFX, kann es sein, dass Sie suspekt werden. Benutzen Sie es nicht zu oft. Vielleicht ist es auch eine gute Idee, diese Information an bestimmte Personen nicht weiterzugeben.</p>
+        </div>
+    </div>
+
+    <!-- Fenster: Fragen und Support -->
+    <div id="modal-support" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-support')">&times;</span>
+            <p>Wenn Sie Fragen haben oder was wollen oder generell Hilfe gebrauchen, schreiben Sie eine E-Mail an: <a href="mailto:brianm@dnmx.cc" style="color: #d32f2f; text-decoration: underline;">brianm@dnmx.cc</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        // Funktion zum Öffnen der Fenster
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+        }
+
+        // Funktion zum Schließen der Fenster
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        // Fenster schließen, wenn man außerhalb des Inhalts klickt
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
